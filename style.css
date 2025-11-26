@@ -5,6 +5,10 @@
     font-family: sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
     background-image: url("japan.jpg");
@@ -19,17 +23,38 @@ body {
     background-color: rgba(169, 42, 4, 0.9);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
-a {
+
+.logo {
     text-decoration: none;
     color: #fff;
     font-size: 1.3rem;
     font-weight: 700;
 }
 
+.All-Links {
+    text-decoration: none;
+    display: flex; 
+    align-items: center;
+    gap: 20px;  
+}
+
+.All-Links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+
+.All-Links a:hover {
+    color: #ffd8b3;
+}
+
 .hero {
-    min-height: calc(100vh - 50px);
+     min-height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,16 +81,37 @@ a {
     padding: 12px 28px;
     background-color: #e35704;
     border-radius: 30px;
-    border-top-right-radius: 1px;
     border: none;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.5s;
+    border-top-right-radius: 1px;
+    transition: 0.3s;
 }
 
 .btn:hover {
     background-color: #ffffff;
     color: #e35704;
     border-top-right-radius: 30px;
+}
+
+.about {
+    background: rgba(0, 0, 0, 0.6);
+    margin: 50px 20px;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+}
+
+.about h2{
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.about p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
 }

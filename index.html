@@ -7,13 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#">Ejaz Shaikh</a>
-    </nav>
+
+   <nav class="navbar">
+  <a href="#" class="logo">Ejaz Shaikh</a>
+
+  <div class="All-Links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
     <section class="hero">
         <h1>Hello, I'm Ejaz</h1>
         <p>I'm a Frontend Engineer | Planning for Japan</p>
-        <button class="btn">View My Projects</button>
+        <button class="btn" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">
+        View My Projects
+    </button>
     </section> 
+
+    <section class="about" id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm Ejaz, a B.E. Computer Science student and aspiring Frontend Engineer.
+            I love creating clean user interfaces and practicing HTML, CSS, and JavaScript.
+            My goal is to work in Japan as a developer and continue growing my skills.
+        </p>
+    </section>
+
 </body>
 </html>
