@@ -97,7 +97,7 @@ body {
 
 .about {
     background: rgba(0, 0, 0, 0.6);
-    margin: 50px 20px;
+    margin: 50px auto;
     padding: 25px;
     border-radius: 12px;
     max-width: 600px;
@@ -117,8 +117,9 @@ body {
 }
 
 .projects {
-    margin: 50px 20px 80px;
+    margin: 50px auto 80px;
     max-width: 900px;
+    text-align: center;
 }
 
 .projects h2 {
@@ -128,7 +129,7 @@ body {
     color: #fff;
 }
 
-.project-grid {
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     gap: 20px;
