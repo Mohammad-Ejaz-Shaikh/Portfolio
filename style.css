@@ -76,13 +76,13 @@ body::before {
 }
 
 .All-Links a {
-    position: relative;
     text-decoration: none;
     color: #fff;
     font-size: 1rem;
     font-weight: 500;
-    padding: 5px 0;
-    transition: color 0.3s;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transform: 0.3s ease;
 }
 
 .All-Links a::after {
@@ -98,6 +98,8 @@ body::before {
 
 .All-Links a:hover {
     color: #ffd8b3;
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
 }
 
 .All-Links a:hover::after {
@@ -236,7 +238,7 @@ body::before {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 20px rgba(227, 87, 4, 0.4);
 }
 
 .container {
