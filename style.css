@@ -130,6 +130,14 @@ body::before {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
+.highlight-name {
+  background: linear-gradient(120deg, #ffd8b3, #ff9f5b, #ffd8b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
 .btn {
   margin-top: 20px;
   padding: 12px 28px;
