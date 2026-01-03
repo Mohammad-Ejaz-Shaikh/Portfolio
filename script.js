@@ -15,19 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  //smooth navigation scroll
-
-  const elements = document.querySelectorAll(".scroll-fade");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  });
-
-  elements.forEach((el) => observer.observe(el));
 
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".All-Links a");
@@ -35,63 +22,60 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     let current = "";
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 100;
-      if (scrollY >= sectionTop) {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    const pageBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 5;
+
+    sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      // Normal sections
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        current = section.getAttribute("id");
+      }
+
+      //  FORCE last section (Contact) when at page bottom
+      if (pageBottom && index === sections.length - 1) {
         current = section.getAttribute("id");
       }
     });
 
     navLinks.forEach((link) => {
       link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
+      if (current && link.getAttribute("href") === `#${current}`) {
         link.classList.add("active");
       }
     });
   });
 
-  // Scroll fade animation
-  const targets = document.querySelectorAll(".fade-scroll");
+  // Unified scroll animation
+  const animatedElements = document.querySelectorAll(
+    ".scroll-fade, .fade-scroll, .skill-group"
+  );
 
-  function checkVisible() {
-    targets.forEach((el, index) => {
-      const rect = el.getBoundingClientRect();
-      if (
-        rect.top < window.innerHeight - 100 &&
-        !el.classList.contains("visible")
-      ) {
-        setTimeout(() => {
-          el.classList.add("visible");
-        }, index * 300);
-      }
-    });
-  }
+  const animationObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible", "show");
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
 
-  window.addEventListener("scroll", checkVisible);
-  checkVisible();
-
-  const skillGroups = document.querySelectorAll(".skill-group");
-
-  function checkSkills() {
-    skillGroups.forEach((el, index) => {
-      const rect = el.getBoundingClientRect();
-
-      if (
-        rect.top < window.innerHeight - 100 &&
-        !el.classList.contains("visible")
-      ) {
-        el.style.transitionDelay = `${index * 0.25}s`;
-        el.classList.add("visible");
-
-        setTimeout(() => {
-          el.style.transitionDelay = "0s";
-        }, index * 300 + 400);
-      }
-    });
-  }
-
-  window.addEventListener("scroll", checkSkills);
-  window.addEventListener("load", checkSkills);
+  animatedElements.forEach((el, index) => {
+    el.style.transitionDelay = `${index * 0.3}s`;
+    animationObserver.observe(el);
+  });
 
   // Back to top Button
   const topBtn = document.getElementById("backToTop");
