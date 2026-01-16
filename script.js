@@ -72,8 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  animatedElements.forEach((el, index) => {
-    el.style.transitionDelay = `${index * 0.3}s`;
+  animatedElements.forEach((el) => {
     animationObserver.observe(el);
   });
 
